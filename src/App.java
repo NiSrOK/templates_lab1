@@ -5,19 +5,20 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.Scanner;
-
-public class App {
-	
+/*interface  Task{
+	int Question( int type_);
+}
+ */
+public class App{
 	public static ArrayList<Integer> listInt;
 	public static String[][] listStr;
-	
+
 	public static int Question_1(){
 		
 		Scanner in = new Scanner(System.in);
 		System.out.println("Тип массива:" + "\n" + "1.Int" + "\n" + "2.String");
 		int num = in.nextInt();
 		return num;
-		
 	}
 	
 	public static int Question_2(){
@@ -27,7 +28,6 @@ public class App {
 		+ "\n" + "2.Второй обработчик удаляет из списка четные или нечетные элементы, в зависимости от настройки" + "\n" + "3. Применить оба обработчика");
 		int num = in.nextInt();
 		return num;
-		
 	}
 	
 	public static int Question_3(){
@@ -37,7 +37,6 @@ public class App {
 		int num = in.nextInt();
 		in.close();
 		return num;
-		
 	}
 	
 	public static int Question_4(){
@@ -48,19 +47,15 @@ public class App {
 		int num = in.nextInt();
 		in.close();
 		return num;
-		
 	}
 
-
 	public static void main(String[] args) throws IOException, InterruptedException{
-		
-		
 		int q = 0;
-
-		
 		int type = 0;
 		String Type = " ";
-	
+		//Create to hands ( int and string) to help with task
+		Handler int_hand = new Handler();
+		Handler str_hand = new Handler();
 
 		q = Question_1();
 		switch (q) {
@@ -68,14 +63,14 @@ public class App {
    				listInt = Generator.Gen(type);
        			q = Question_2();
            		if (q==1){
-        			Handler.getIntResultFirst(listInt);
+        			int_hand.getIntResultFirst(listInt);
         			break;
            		}
           		if (q==2){
           			q = Question_3();
           			if (q==1 || q==2){
-          				Handler.getIntResultSecond(listInt,q);
-          				break;
+						int_hand.getIntResultSecond(listInt,q);
+						break;
           			}
           			else{
           				System.out.println("Ошибка ввода!");
@@ -85,9 +80,9 @@ public class App {
     			if (q==3){
     				q = Question_3();
           			if (q==1 || q==2){
-          				Handler.getIntResultFirst(listInt);
+          				int_hand.getIntResultFirst(listInt);
      	        	    System.out.println();
-          				Handler.getIntResultSecond(listInt,q);
+          				int_hand.getIntResultSecond(listInt,q);
           				break;
           			}
           			else{
@@ -104,17 +99,17 @@ public class App {
         	   listStr = Generator.Gen(Type);
         	   q = Question_4();
         	   if (q==1){
-	        	   Handler.getStrResultFirst(listStr);
+				   str_hand.getStrResultFirst(listStr);
 	               break;
         	   }
         	   if (q==2){
-	        	   Handler.getStrResultSecond(listStr);
+				   str_hand.getStrResultSecond(listStr);
 	               break;
         	   }
         	   if (q==3){
-	        	   Handler.getStrResultFirst(listStr);
+				   str_hand.getStrResultFirst(listStr);
 	        	   System.out.println();
-	        	   Handler.getStrResultSecond(listStr);
+				   str_hand.getStrResultSecond(listStr);
 	               break;
         	   }
         	   else{
