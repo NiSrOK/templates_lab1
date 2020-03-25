@@ -6,9 +6,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Generator {
 
-
-
-
 	public static ArrayList<Integer> Gen(int type) throws IOException, InterruptedException {
 
 		ArrayList<Integer> Array = new ArrayList<>();
