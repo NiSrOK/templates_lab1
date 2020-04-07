@@ -13,7 +13,7 @@ class Task_class implements Task {
 
         if (type_ == 1) {
             Scanner in = new Scanner(System.in);
-            System.out.println("Тип массива:" + "\n" + "1.Int" + "\n" + "2.String");
+            System.out.println("Array Type:" + "\n" + "1.Int" + "\n" + "2.String");
             int num = in.nextInt();
             return num;
 
@@ -21,15 +21,15 @@ class Task_class implements Task {
         if (type_ == 2) {
 
             Scanner in = new Scanner(System.in);
-            System.out.println("Выберите обработчик:" + "\n" + "1.Первый обработчик возвращает их сумму, среднее значение, минимальный и максимальный элемент"
-                    + "\n" + "2.Второй обработчик удаляет из списка четные или нечетные элементы, в зависимости от настройки" + "\n" + "3. Применить оба обработчика");
+            System.out.println("Select a handler:" + "\n" + "1. The first handler returns the sum, the average value, the minimum and maximum element"
+                    + "\n" + "2. The second handler removes even or odd elements from the list, depending on the setting" + "\n" + "3. Apply both handlers");
             int num = in.nextInt();
             return num;
         }
         if (type_ == 3) {
 
             Scanner in = new Scanner(System.in);
-            System.out.println("Удалять: " + "\n" + "1.Четные" + "\n" + "2. Нечетные");
+            System.out.println("Delete: " + "\n" + "1.Even" + "\n" + "2.Odd");
             int num = in.nextInt();
             in.close();
             return num;
@@ -38,8 +38,8 @@ class Task_class implements Task {
         if (type_ == 4) {
 
             Scanner in = new Scanner(System.in);
-            System.out.println("Выберите обработчик:" + "\n" + "1.Первый обработчик — возвращает «склеенную» строку"
-                    + "\n" + "2.Второй обработчик подсчитывает количество слов в каждой строке, общее количество слов и символов по всем строкам списка" + "\n" + "3.Применить оба обработчика");
+            System.out.println("Select a handler:" + "\n" + "1. The first handler - returns the glued string"
+                    + "\n" + "2. The second handler counts the number of words in each line, the total number of words and characters across all lines of the list" + "\n" + "3. Apply both handlers");
             int num = in.nextInt();
             in.close();
             return num;
@@ -83,7 +83,7 @@ class Worker extends Task_class{
                         int_hand.getIntResultSecond(listInt, q);
                         break;
                     } else {
-                        System.out.println("Ошибка ввода!");
+                        System.out.println("Input Error!");
                         System.exit(0);
                     }
                 }
@@ -95,11 +95,11 @@ class Worker extends Task_class{
                         int_hand.getIntResultSecond(listInt, q);
                         break;
                     } else {
-                        System.out.println("Ошибка ввода!");
+                        System.out.println("Input Error!");
                         System.exit(0);
                     }
                 } else {
-                    System.out.println("Ошибка ввода!");
+                    System.out.println("Input Error!");
                     System.exit(0);
                 }
 
@@ -120,12 +120,12 @@ class Worker extends Task_class{
                     str_hand.getStrResultSecond(listStr);
                     break;
                 } else {
-                    System.out.println("Ошибка ввода!");
+                    System.out.println("Input Error!");
                     System.exit(0);
                 }
 
             default:
-                System.out.println("ERROR");
+                System.out.println("Input Error!");
                 break;
 
         }
