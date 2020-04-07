@@ -3,20 +3,35 @@ import java.io.*;
 import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+interface  Operation{
+	int Sum (ArrayList<Integer> list);
+	int Min (ArrayList<Integer> list);
+	int Max (ArrayList<Integer> list);
+	int Mean (int sum, ArrayList<Integer> list);
+	void getIntResultFirst (ArrayList<Integer> list);
+	void getIntResultSecond (ArrayList<Integer> list, int q) throws IOException;
+	ArrayList<Integer> HandIntFirst (ArrayList<Integer> list);
+	ArrayList<Integer> HandIntSecond (ArrayList<Integer> list, int q);
+	ArrayList<String> HandStrFirst (String[][] list);
+	ArrayList<Integer> HandStrSecond (String[][] list);
+	void getStrResultFirst (String[][] list);
+	void getStrResultSecond (String[][] list);
+}
 
-public class Handler {
+
+public class Handler implements  Operation{
 	
 	public static int s, min, max, mean;
-	
-	public static int Sum (ArrayList<Integer> list){
+	@Override
+	public int Sum (ArrayList<Integer> list){
 		int s = 0;
 		for(int i = 0; i<list.size(); i++){
 			s += list.get(i);
 		}
 		return s;
 	}
-	
-	public static int Min (ArrayList<Integer> list){
+	@Override
+	public int Min (ArrayList<Integer> list){
 		int min = list.get(0);
 		for(int i = 0; i<list.size(); i++){
 			if (min>list.get(i)){
@@ -25,8 +40,8 @@ public class Handler {
 		}
 		return min;
 	}
-	
-	public static int Max (ArrayList<Integer> list){
+	@Override
+	public int Max (ArrayList<Integer> list){
 		int max = list.get(0);
 		for(int i = 0; i<list.size(); i++){
 			if (max<list.get(i)){
@@ -35,14 +50,14 @@ public class Handler {
 		}
 		return max;
 	}
-	
-	public static int Mean (int sum, ArrayList<Integer> list){
+	@Override
+	public int Mean (int sum, ArrayList<Integer> list){
 		int s = sum;
 		mean = s/(list.size()+1);
 		return mean;
 	}
-	
-	public static void getIntResultFirst (ArrayList<Integer> list){
+	@Override
+	public void getIntResultFirst(ArrayList<Integer> list){
 		ArrayList<Integer> res = HandIntFirst(list); 
 		
 		System.out.println("Сумма элементов массива: " + res.get(0));
@@ -50,8 +65,8 @@ public class Handler {
 		System.out.println("Максимальный элемент массива: " + res.get(2));
 		System.out.println("Среднее значение элементов массива: " + res.get(3));
 	}
-	
-	public static void getIntResultSecond (ArrayList<Integer> list, int q) throws IOException{
+	@Override
+	public void getIntResultSecond (ArrayList<Integer> list, int q) throws IOException{
 		ArrayList<Integer> res = HandIntSecond(list, q); 
 		
 		try(FileWriter writer = new FileWriter("Int2.txt", false)){
@@ -63,8 +78,8 @@ public class Handler {
 		System.out.println("Массив записан в файл");
 		
 	}
-	
-	public static ArrayList<Integer> HandIntFirst (ArrayList<Integer> list){
+	@Override
+	public ArrayList<Integer> HandIntFirst (ArrayList<Integer> list){
 		ArrayList<Integer> Result = new ArrayList<>();
 		Result.add(Sum(list));
 		Result.add(Min(list));
@@ -73,8 +88,8 @@ public class Handler {
 				
 		return Result;
 	}
-	
-	public static ArrayList<Integer> HandIntSecond (ArrayList<Integer> list, int q){
+	@Override
+	public ArrayList<Integer> HandIntSecond (ArrayList<Integer> list, int q){
 		ArrayList<Integer> res = new ArrayList<>(); 
 		if (q==2){
 			for (int i =0; i<list.size();i++){
@@ -99,8 +114,8 @@ public class Handler {
 				
 		return res;
 	}
-	
-	public static ArrayList<String> HandStrFirst (String[][] list){
+	@Override
+	public ArrayList<String> HandStrFirst (String[][] list){
 		ArrayList<String> Result = new ArrayList<>();
 		
 		for (int i = 0; i < list.length; i++) {
@@ -113,8 +128,8 @@ public class Handler {
 	
 		return Result;
 	}
-	
-	public static void getStrResultFirst (String[][] list){
+	@Override
+	public void getStrResultFirst (String[][] list){
 		ArrayList<String> res = HandStrFirst(list); 
 		
 		System.out.println("«Cклеенная» строка: ");
@@ -122,8 +137,8 @@ public class Handler {
 		System.out.print(res.get(i));
 		}
 	}
-	
-	public static ArrayList<Integer> HandStrSecond (String[][] list){
+	@Override
+	public ArrayList<Integer> HandStrSecond (String[][] list){
 		ArrayList<Integer> Result = new ArrayList<>();
 		int amt = 0;
 		int length = 0;
@@ -144,8 +159,8 @@ public class Handler {
 	
 		return Result;
 	}
-	
-	public static void getStrResultSecond (String[][] list){
+	@Override
+	public void getStrResultSecond (String[][] list){
 		ArrayList<Integer> res = HandStrSecond(list); 
 		
 		int line = res.get(0);
